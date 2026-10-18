@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SourceSnap - Library & Settings</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #f59e0b;
+      --accent-hover: #d97706;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 32px 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    h1 { font-size: 24px; font-weight: 700; }
+    p.tagline { color: var(--text-muted); font-size: 14px; }
+    .nav-tabs { display: flex; gap: 8px; margin-bottom: 24px; }
+    .tab-btn {
+      background: var(--card-bg);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      color: #0f172a;
+      border-color: var(--accent);
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .snippet-item {
+      background: #151f32;
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .snippet-text { font-size: 14px; line-height: 1.5; margin-bottom: 12px; color: #e2e8f0; }
+    .snippet-info { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+    .actions { display: flex; gap: 8px; }
+    button.action-btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    button.action-btn:hover { background: #1d4ed8; }
+    button.del-btn {
+      background: transparent;
+      color: #ef4444;
+      border: 1px solid #ef4444;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    select, input[type="text"] {
+      width: 100%;
+      max-width: 400px;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <svg viewBox="0 0 24 24" width="32" height="32" fill="none">
+        <path d="M5 3C4.44772 3 4 3.44772 4 4V21L12 17.5L20 21V4C20 3.44772 19.5523 3 19 3H5Z" fill="#F59E0B" />
+        <path d="M8.5 10.5L11 13L15.5 8" stroke="#1E293B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div>
+        <h1>SourceSnap Vault</h1>
+        <p class="tagline">Your offline web excerpts & instant citation library</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav-tabs">
+    <button class="tab-btn active" id="tabLibrary">Offline Library</button>
+    <button class="tab-btn" id="tabSettings">Settings & Export</button>
+  </div>
+
+  <div id="librarySection">
+    <div class="card">
+      <h2 style="font-size: 18px; margin-bottom: 12px;">Saved Web Excerpts</h2>
+      <div id="libraryList" class="grid">
+        <!-- Rendered by options.js -->
+      </div>
+    </div>
+  </div>
+
+  <div id="settingsSection" style="display: none;">
+    <div class="card">
+      <h2 style="font-size: 18px; margin-bottom: 16px;">Preferences</h2>
+      <div class="form-group">
+        <label for="defaultCitation">Default Citation Format</label>
+        <select id="defaultCitation">
+          <option value="sourcesnap">SourceSnap Quick (Mockup style)</option>
+          <option value="apa">APA 7th Edition</option>
+          <option value="mla">MLA 9th Edition</option>
+          <option value="chicago">Chicago Manual of Style</option>
+          <option value="bibtex">BibTeX</option>
+          <option value="markdown">Markdown Quote</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="showFloatingButton" checked>
+          Show quick "Save to SourceSnap" tooltip when highlighting text
+        </label>
+      </div>
+      <div style="margin-top: 24px; display: flex; gap: 12px;">
+        <button class="action-btn" id="exportAllJsonBtn">Export All (JSON)</button>
+        <button class="action-btn" id="exportAllCsvBtn" style="background: #059669;">Export All (CSV)</button>
+        <button class="action-btn" id="clearAllBtn" style="background: #dc2626;">Clear All Data</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "SourceSnap - Chrome Extension & Offline Snippet Saver",
+  "description": "Chrome extension to save webpage text, URLs, and key excerpts for offline access and instant formatted citations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

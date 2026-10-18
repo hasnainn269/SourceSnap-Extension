@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="sourcesnap-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <filter id="badge-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Dark navy rounded badge background -->
+  <rect width="64" height="64" rx="14" fill="#0F172A" />
+
+  <!-- Subtle border highlight -->
+  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#F59E0B" stroke-opacity="0.3" stroke-width="1" />
+
+  <!-- Golden Bookmark Ribbon -->
+  <path d="M18 12C16.3431 12 15 13.3431 15 15V52L32 43.5L49 52V15C49 13.3431 47.6569 12 46 12H18Z" 
+        fill="url(#sourcesnap-gold)" 
+        filter="url(#badge-glow)" />
+
+  <!-- Bold Navy Checkmark inside Ribbon -->
+  <path d="M24 28L29.5 33.5L40 22.5" 
+        stroke="#0F172A" 
+        stroke-width="4.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+</svg>

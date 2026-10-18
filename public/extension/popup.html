@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SourceSnap</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <path d="M5 3C4.44772 3 4 3.44772 4 4V21L12 17.5L20 21V4C20 3.44772 19.5523 3 19 3H5Z" fill="#F59E0B" />
+            <path d="M8.5 10.5L11 13L15.5 8" stroke="#1E293B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1 class="brand-name">SourceSnap</h1>
+          <p class="brand-tagline">Save it. Find it. Cite it.</p>
+        </div>
+      </div>
+      <button id="openOptionsBtn" class="avatar-badge" title="Options & Offline Vault">
+        <span>S</span>
+      </button>
+    </header>
+
+    <!-- Search Section -->
+    <div class="search-box">
+      <div class="search-input-wrapper">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search saved snippets..." autocomplete="off">
+        <button id="clearSearchBtn" class="clear-btn hidden" title="Clear search">✕</button>
+      </div>
+    </div>
+
+    <!-- Status / Count -->
+    <div class="status-bar">
+      <span id="snippetsCount">0 snippets saved</span>
+      <div class="status-actions">
+        <select id="styleSelect" title="Citation Style">
+          <option value="sourcesnap">SourceSnap Quick</option>
+          <option value="apa">APA 7th</option>
+          <option value="mla">MLA 9th</option>
+          <option value="chicago">Chicago</option>
+          <option value="bibtex">BibTeX</option>
+          <option value="markdown">Markdown</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Snippets List -->
+    <main class="snippets-container" id="snippetsList">
+      <!-- Injected via popup.js -->
+    </main>
+
+    <!-- Bottom Toast Notification -->
+    <div id="toastNotification" class="toast hidden">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+      <span id="toastText">Citation copied to clipboard!</span>
+    </div>
+
+    <!-- Footer Quick Actions -->
+    <footer class="app-footer">
+      <button id="openOfflineReaderBtn" class="footer-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        <span>Offline Library</span>
+      </button>
+      <button id="exportSnippetsBtn" class="footer-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>Backup JSON</span>
+      </button>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
